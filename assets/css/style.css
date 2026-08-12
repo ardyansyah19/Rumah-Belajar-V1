@@ -1,0 +1,408 @@
+/* =========================================================
+   LES PRIVAT PINTAR — Design Tokens
+   Palet   : kertas hangat + indigo tinta + coral & kuning stabilo
+   Tipografi: Baloo 2 (display, bulat & ramah) + Plus Jakarta Sans (body)
+   Signature: sapuan "stabilo" di judul & kartu bergaya "buku catatan"
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --paper: #FFF8EC;
+    --paper-soft: #FFFDF8;
+    --ink: #21254A;
+    --ink-soft: #5B5F82;
+    --indigo: #2E3192;
+    --indigo-dark: #1D1F63;
+    --coral: #FF6B4A;
+    --coral-dark: #E5522F;
+    --yellow: #FFC93C;
+    --mint: #2EC4B6;
+    --mint-dark: #1E9E92;
+    --red: #E63946;
+    --line: #E9E1CF;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-sm: 9px;
+    --shadow: 0 10px 30px rgba(33, 37, 74, 0.08);
+    --shadow-hover: 0 16px 36px rgba(33, 37, 74, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Baloo 2', sans-serif;
+    color: var(--ink);
+    margin: 0 0 .4em;
+    line-height: 1.25;
+}
+
+a { color: var(--indigo); text-decoration: none; }
+p { margin: 0 0 1em; }
+
+img { max-width: 100%; }
+
+/* --- Signature: sapuan stabilo di bawah judul penting --- */
+.stabilo {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+.stabilo::after {
+    content: '';
+    position: absolute;
+    left: -4px; right: -4px; bottom: 2px;
+    height: .42em;
+    background: var(--yellow);
+    opacity: .55;
+    border-radius: 6px 3px 6px 2px;
+    transform: rotate(-1deg);
+    z-index: -1;
+}
+
+/* =========================================================
+   TOMBOL & FORM
+   ========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    border-radius: 999px;
+    padding: .75em 1.6em;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    text-align: center;
+}
+.btn:active { transform: translateY(1px) scale(.98); }
+.btn-primary { background: var(--coral); color: #fff; box-shadow: 0 8px 18px rgba(255,107,74,.35); }
+.btn-primary:hover { background: var(--coral-dark); box-shadow: 0 10px 22px rgba(255,107,74,.45); }
+.btn-indigo { background: var(--indigo); color: #fff; box-shadow: 0 8px 18px rgba(46,49,146,.3); }
+.btn-indigo:hover { background: var(--indigo-dark); }
+.btn-mint { background: var(--mint); color: #fff; box-shadow: 0 8px 18px rgba(46,196,182,.32); }
+.btn-mint:hover { background: var(--mint-dark); }
+.btn-outline { background: transparent; color: var(--indigo); border: 2px solid var(--indigo); padding: .68em 1.5em; }
+.btn-outline:hover { background: var(--indigo); color: #fff; }
+.btn-danger { background: #fff; color: var(--red); border: 2px solid var(--red); padding: .55em 1.2em; font-size: 13.5px; }
+.btn-danger:hover { background: var(--red); color: #fff; }
+.btn-sm { padding: .5em 1.1em; font-size: 13.5px; }
+.btn-block { width: 100%; }
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 .4em;
+    color: var(--ink);
+}
+.form-group { margin-bottom: 1.15em; }
+.form-hint { font-size: 12.5px; color: var(--ink-soft); margin-top: .35em; }
+
+input[type=text], input[type=password], input[type=file], select, textarea {
+    width: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    padding: .8em 1em;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--paper-soft);
+    color: var(--ink);
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+textarea { min-height: 140px; resize: vertical; }
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 4px rgba(46,49,146,.12);
+}
+
+/* =========================================================
+   HALAMAN AUTH (login/register) — kartu terpusat
+   ========================================================= */
+.auth-wrap {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255,201,60,.35), transparent 40%),
+        radial-gradient(circle at 88% 82%, rgba(46,196,182,.28), transparent 42%),
+        var(--paper);
+}
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 2.4em 2.1em;
+    border: 1px solid var(--line);
+}
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    justify-content: center;
+    margin-bottom: 1.4em;
+}
+.auth-brand .logo-badge {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: var(--indigo);
+    display: grid; place-items: center;
+    font-size: 20px;
+}
+.auth-brand span.name {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--ink);
+}
+.auth-card h1 { font-size: 22px; text-align: center; }
+.auth-sub { text-align: center; color: var(--ink-soft); font-size: 13.5px; margin-bottom: 1.6em; }
+.auth-switch { text-align: center; margin-top: 1.2em; font-size: 14px; color: var(--ink-soft); }
+.auth-switch a { font-weight: 700; }
+
+.alert {
+    padding: .85em 1.1em;
+    border-radius: var(--radius-sm);
+    font-size: 13.8px;
+    margin-bottom: 1.2em;
+    font-weight: 500;
+}
+.alert-error { background: #FDEAEA; color: #B32433; border: 1px solid #F5C2C7; }
+.alert-success { background: #E6F9F3; color: #157A6E; border: 1px solid #B7EDE1; }
+
+/* =========================================================
+   LAYOUT DASHBOARD (sidebar + topbar)
+   ========================================================= */
+.app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+}
+.sidebar {
+    background: var(--indigo-dark);
+    color: #fff;
+    padding: 1.6em 1.2em;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    margin-bottom: 2em;
+    padding: 0 .3em;
+}
+.sidebar .brand .logo-badge {
+    width: 36px; height: 36px;
+    background: var(--coral);
+    border-radius: 10px;
+    display: grid; place-items: center;
+}
+.sidebar .brand span { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 17px; }
+
+.sidebar nav { display: flex; flex-direction: column; gap: .3em; flex: 1; }
+.sidebar nav a {
+    color: rgba(255,255,255,.75);
+    padding: .7em 1em;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 14.2px;
+    display: flex;
+    align-items: center;
+    gap: .7em;
+    transition: background .15s ease, color .15s ease;
+}
+.sidebar nav a:hover { background: rgba(255,255,255,.08); color: #fff; }
+.sidebar nav a.active { background: var(--coral); color: #fff; }
+.sidebar .user-box {
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding-top: 1em;
+    margin-top: 1em;
+}
+.sidebar .user-box .who { font-size: 13.5px; color: rgba(255,255,255,.65); margin-bottom: .6em; }
+.sidebar .user-box .who b { color: #fff; display: block; font-size: 14.5px; }
+.sidebar .logout-link {
+    display: block;
+    text-align: center;
+    background: rgba(255,255,255,.08);
+    padding: .6em;
+    border-radius: var(--radius-sm);
+    color: #fff !important;
+    font-size: 13.5px;
+    font-weight: 600 !important;
+}
+.sidebar .logout-link:hover { background: var(--red); }
+
+.main { padding: 2em 2.4em; max-width: 1180px; }
+.page-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.6em; gap: 1em; flex-wrap: wrap; }
+.page-head h1 { font-size: 26px; }
+.page-head .desc { color: var(--ink-soft); font-size: 14px; margin-top: .2em; }
+
+/* =========================================================
+   KARTU & KOMPONEN UMUM
+   ========================================================= */
+.card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.5em 1.6em;
+    box-shadow: var(--shadow);
+}
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1em; margin-bottom: 1.8em; }
+.stat-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 1.3em 1.4em;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+.stat-card .num { font-family: 'Baloo 2', sans-serif; font-size: 30px; font-weight: 700; color: var(--indigo); }
+.stat-card .label { font-size: 13px; color: var(--ink-soft); font-weight: 600; margin-top: .2em; }
+.stat-card::before {
+    content: '';
+    position: absolute; top: -20px; right: -20px;
+    width: 70px; height: 70px; border-radius: 50%;
+    background: var(--yellow); opacity: .18;
+}
+
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1em; }
+
+.item-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--indigo);
+    border-radius: var(--radius-md);
+    padding: 1.2em 1.3em;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.item-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.item-card.sd { border-left-color: var(--mint); }
+.item-card.smp { border-left-color: var(--coral); }
+.item-card.sma { border-left-color: var(--indigo); }
+.item-card h3 { font-size: 17px; margin-bottom: .3em; }
+.item-card .meta { font-size: 12.5px; color: var(--ink-soft); margin-bottom: .8em; display: flex; gap: .6em; align-items: center; flex-wrap: wrap; }
+.item-card .excerpt { font-size: 13.8px; color: var(--ink-soft); margin-bottom: 1em; }
+.item-card .actions { display: flex; gap: .5em; flex-wrap: wrap; }
+
+.badge {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: .25em .75em;
+    border-radius: 999px;
+    letter-spacing: .02em;
+}
+.badge-sd { background: #E6F9F3; color: var(--mint-dark); }
+.badge-smp { background: #FFEDE8; color: var(--coral-dark); }
+.badge-sma { background: #EAEAFB; color: var(--indigo); }
+.badge-done { background: #E6F9F3; color: var(--mint-dark); }
+.badge-pending { background: #FFF3D9; color: #9A6B00; }
+
+/* =========================================================
+   TABEL
+   ========================================================= */
+table { width: 100%; border-collapse: collapse; background: #fff; }
+.table-wrap { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow); }
+th, td { text-align: left; padding: .95em 1.1em; font-size: 14px; border-bottom: 1px solid var(--line); }
+th { background: var(--paper); font-family: 'Baloo 2', sans-serif; font-weight: 600; color: var(--ink); font-size: 13px; text-transform: uppercase; letter-spacing: .03em; }
+tr:last-child td { border-bottom: none; }
+td.muted { color: var(--ink-soft); }
+
+/* =========================================================
+   KUIS: pilihan jawaban gaya "kartu"
+   ========================================================= */
+.soal-block { margin-bottom: 1.8em; padding-bottom: 1.6em; border-bottom: 2px dashed var(--line); }
+.soal-block:last-child { border-bottom: none; }
+.soal-nomor { display: inline-block; background: var(--indigo); color: #fff; font-family: 'Baloo 2', sans-serif; font-weight: 700; width: 30px; height: 30px; border-radius: 9px; text-align: center; line-height: 30px; margin-bottom: .6em; }
+.soal-teks { font-size: 16px; font-weight: 600; margin-bottom: 1em; }
+.opsi-list { display: grid; gap: .6em; }
+.opsi {
+    display: flex;
+    align-items: center;
+    gap: .8em;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: .8em 1em;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+}
+.opsi:hover { border-color: var(--indigo); background: var(--paper); }
+.opsi input { width: auto; margin: 0; accent-color: var(--indigo); }
+.opsi .huruf { font-family: 'Baloo 2', sans-serif; font-weight: 700; color: var(--indigo); width: 22px; }
+
+.opsi.benar { border-color: var(--mint); background: #E6F9F3; }
+.opsi.salah { border-color: var(--red); background: #FDEAEA; }
+.opsi.jawaban-dipilih .huruf { text-decoration: underline; }
+
+.skor-hero {
+    text-align: center;
+    padding: 2em 1em;
+    background: linear-gradient(135deg, rgba(46,49,146,.06), rgba(255,201,60,.12));
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.6em;
+}
+.skor-hero .angka { font-family: 'Baloo 2', sans-serif; font-size: 54px; font-weight: 800; color: var(--indigo); }
+.skor-hero .ket { color: var(--ink-soft); font-weight: 600; }
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+.empty {
+    text-align: center;
+    padding: 3em 1.5em;
+    color: var(--ink-soft);
+    background: #fff;
+    border: 2px dashed var(--line);
+    border-radius: var(--radius-lg);
+}
+.empty .emoji { font-size: 40px; display: block; margin-bottom: .4em; }
+
+/* =========================================================
+   UTIL
+   ========================================================= */
+.flex-between { display: flex; justify-content: space-between; align-items: center; gap: 1em; flex-wrap: wrap; }
+.tabs { display: flex; gap: .5em; margin-bottom: 1.5em; flex-wrap: wrap; }
+.tabs a {
+    padding: .55em 1.3em;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--line);
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+}
+.tabs a.active { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+.mt-2 { margin-top: 1.4em; }
+.text-center { text-align: center; }
+
+@media (max-width: 880px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: sticky; top: 0; z-index: 20; flex-direction: row; align-items: center; padding: .9em 1.1em; overflow-x: auto; }
+    .sidebar .brand { margin-bottom: 0; margin-right: 1em; }
+    .sidebar nav { flex-direction: row; flex: none; }
+    .sidebar .user-box { display: none; }
+    .main { padding: 1.4em 1.1em; }
+}
